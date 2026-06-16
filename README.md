@@ -9,3 +9,5 @@
 - AI 城市医生对话（DashScope · qwen3.7-plus · 多轮上下文）
 - 科技风深色 UI（侧边栏 + 顶栏 + 主内容区）
 - 全部使用 Mock 数据
+
+## https://ai-city-pied.vercel.app/
