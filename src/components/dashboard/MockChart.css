@@ -1,0 +1,117 @@
+.mock-chart {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.mock-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.mock-chart-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mock-chart-legend {
+  display: flex;
+  gap: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.legend-dot.energy {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.legend-dot.flow {
+  background: #818cf8;
+  box-shadow: 0 0 8px rgba(129, 140, 248, 0.5);
+}
+
+.chart-area {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 200px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.chart-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.chart-bars {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+}
+
+.chart-bar {
+  width: 12px;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: height 0.5s ease;
+}
+
+.chart-bar.energy {
+  background: linear-gradient(180deg, var(--accent), rgba(56, 189, 248, 0.3));
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.chart-bar.flow {
+  background: linear-gradient(180deg, #818cf8, rgba(129, 140, 248, 0.3));
+}
+
+.chart-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-right: 12px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-right: 1px solid var(--border);
+  margin-right: 8px;
+  min-width: 36px;
+}
+
+.chart-body {
+  flex: 1;
+  display: flex;
+  height: 200px;
+}

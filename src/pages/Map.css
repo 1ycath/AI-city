@@ -1,0 +1,9 @@
+.map-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  height: calc(100vh - var(--topbar-height) - 120px);
+  min-height: 480px;
+  position: relative;
+  overflow: hidden;
+}
