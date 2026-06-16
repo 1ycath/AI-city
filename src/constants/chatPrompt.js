@@ -1,6 +1,7 @@
 /** DashScope OpenAI 兼容模式 */
-export const DASHSCOPE_BASE_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1';
-
+export const DASHSCOPE_BASE_URL =
+  import.meta.env.VITE_DASHSCOPE_BASE_URL ||
+  'https://dashscope.aliyuncs.com/compatible-mode/v1';
 export const CHAT_MODEL = 'qwen3.7-plus';
 
 export const CHAT_SYSTEM_PROMPT = `你是AI城市医生助手，专门服务于智慧城市运营管理平台「AI城市医生」。

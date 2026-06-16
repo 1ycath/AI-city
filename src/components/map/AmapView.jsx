@@ -73,9 +73,10 @@ export default function AmapView({ center, zoom, zones }) {
         );
 
         const markers = zones.map((zone) => {
+          const label = zone.code ?? zone.building?.name ?? zone.name;
           const marker = new AMap.Marker({
             position: [zone.lng, zone.lat],
-            title: zone.building?.name ?? `${zone.id} ${zone.name}`,
+            title: zone.building?.name ?? label,
             content: `<div style="
               width:14px;height:14px;border-radius:50%;
               background:${STATUS_COLORS[zone.status]};
@@ -94,7 +95,7 @@ export default function AmapView({ center, zoom, zones }) {
               border:1px solid rgba(56,189,248,0.3);border-radius:4px;
               color:#e2e8f0;font-size:11px;font-family:monospace;
               white-space:nowrap;cursor:pointer;
-            ">${zone.id}</div>`,
+            ">${label}</div>`,
           });
 
           marker.on('click', () => goToBuilding(zone.id));
@@ -136,7 +137,8 @@ export default function AmapView({ center, zoom, zones }) {
               title={`定位至 ${zone.building?.name ?? zone.name}`}
             >
               <span className={`amap-zone-dot ${zone.status}`} />
-              {zone.id} {zone.building?.name ?? zone.name}
+              {zone.code ? `${zone.code} ` : ''}
+              {zone.building?.name ?? zone.name}
             </button>
           ))}
         </div>

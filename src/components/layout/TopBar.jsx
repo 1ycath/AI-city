@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { navItems, getBuildingById, APP_NAME } from '../../data/mock';
+import { navItems, APP_NAME } from '../../data/mock';
+import { fetchBuildingByIdOrCode } from '../../services/buildings';
 import './TopBar.css';
 
 function formatTime(date) {
@@ -12,24 +13,43 @@ function formatTime(date) {
   });
 }
 
-function getPageLabel(pathname) {
-  const buildingMatch = pathname.match(/^\/building\/(.+)$/);
-  if (buildingMatch) {
-    const zone = getBuildingById(buildingMatch[1]);
-    return zone ? `建筑详情 · ${zone.building.name}` : '建筑详情';
-  }
-  return navItems.find((item) => item.path === pathname)?.label ?? '总览看板';
-}
-
 export default function TopBar() {
   const location = useLocation();
   const [time, setTime] = useState(() => formatTime(new Date()));
-  const pageLabel = getPageLabel(location.pathname);
+  const [buildingName, setBuildingName] = useState('');
 
   useEffect(() => {
     const timer = setInterval(() => setTime(formatTime(new Date())), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const buildingMatch = location.pathname.match(/^\/building\/(.+)$/);
+    if (!buildingMatch) {
+      setBuildingName('');
+      return;
+    }
+
+    let cancelled = false;
+    fetchBuildingByIdOrCode(buildingMatch[1])
+      .then((row) => {
+        if (!cancelled) setBuildingName(row?.name ?? '');
+      })
+      .catch(() => {
+        if (!cancelled) setBuildingName('');
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [location.pathname]);
+
+  const buildingMatch = location.pathname.match(/^\/building\/(.+)$/);
+  const pageLabel = buildingMatch
+    ? buildingName
+      ? `建筑详情 · ${buildingName}`
+      : '建筑详情'
+    : (navItems.find((item) => item.path === location.pathname)?.label ?? '总览看板');
 
   return (
     <header className="topbar">

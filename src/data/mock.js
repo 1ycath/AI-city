@@ -674,5 +674,6 @@ export const navItems = [
   { path: '/map', label: '城市地图', icon: 'map' },
   { path: '/chat', label: '城市医生', icon: 'chat' },
   { path: '/alerts', label: '告警中心', icon: 'alerts' },
+  { path: '/buildings', label: '建筑信息', icon: 'buildings' },
   { path: '/settings', label: '系统设置', icon: 'settings' },
 ];

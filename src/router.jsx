@@ -7,6 +7,7 @@ import Alerts from './pages/Alerts';
 import Settings from './pages/Settings';
 import BuildingDetail from './pages/BuildingDetail';
 import Chat from './pages/Chat';
+import Buildings from './pages/Buildings';
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
       { path: 'chat', element: <Chat /> },
       { path: 'building/:id', element: <BuildingDetail /> },
       { path: 'alerts', element: <Alerts /> },
+      { path: 'buildings', element: <Buildings /> },
       { path: 'settings', element: <Settings /> },
     ],
   },
