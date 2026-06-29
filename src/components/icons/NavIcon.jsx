@@ -37,6 +37,32 @@ const icons = {
       <path d="M9 21v-6h6v6M9 9h.01M15 9h.01M9 13h.01M15 13h.01" />
     </svg>
   ),
+  report: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M8 4h8l2 3v13H6V4z" />
+      <path d="M9 11h6M9 15h4M15 4v4h3" />
+      <path d="M4 9h2M18 9h2" />
+    </svg>
+  ),
+  voice: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8" />
+    </svg>
+  ),
+  image: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <circle cx="8.5" cy="10" r="1.5" />
+      <path d="M21 15l-5-5L5 19" />
+    </svg>
+  ),
+  table: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 10h18M9 4v16M15 4v16" />
+    </svg>
+  ),
   population: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />

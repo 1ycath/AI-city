@@ -13,6 +13,14 @@ function formatTime(date) {
   });
 }
 
+function getSmartReportLabel(pathname) {
+  if (pathname === '/smart-report') return '智能填报';
+  if (pathname === '/smart-report/voice') return '智能填报 · 语音识别';
+  if (pathname === '/smart-report/image') return '智能填报 · 图像识别';
+  if (pathname === '/smart-report/table') return '智能填报 · 智能表格';
+  return null;
+}
+
 export default function TopBar() {
   const location = useLocation();
   const [time, setTime] = useState(() => formatTime(new Date()));
@@ -26,7 +34,6 @@ export default function TopBar() {
   useEffect(() => {
     const buildingMatch = location.pathname.match(/^\/building\/(.+)$/);
     if (!buildingMatch) {
-      setBuildingName('');
       return;
     }
 
@@ -45,11 +52,13 @@ export default function TopBar() {
   }, [location.pathname]);
 
   const buildingMatch = location.pathname.match(/^\/building\/(.+)$/);
+  const smartReportLabel = getSmartReportLabel(location.pathname);
   const pageLabel = buildingMatch
     ? buildingName
       ? `建筑详情 · ${buildingName}`
       : '建筑详情'
-    : (navItems.find((item) => item.path === location.pathname)?.label ?? '总览看板');
+    : smartReportLabel ??
+      (navItems.find((item) => item.path === location.pathname)?.label ?? '总览看板');
 
   return (
     <header className="topbar">
